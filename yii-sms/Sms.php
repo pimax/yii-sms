@@ -23,7 +23,7 @@ class Sms extends CApplicationComponent
     public $sha512;
     
     /**
-     * Инициализация компонента
+     * Init
      * 
      * @throws CException
      */
