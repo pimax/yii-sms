@@ -24,7 +24,7 @@ class Sms extends CApplicationComponent
      * @throws CException
      */
     public function init()
-	{
+    {
         if (!function_exists ('curl_init'))
         {
             throw new CException ('Для работы расширения требуется cURL');
