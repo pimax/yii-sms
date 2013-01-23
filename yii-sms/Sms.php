@@ -25,12 +25,12 @@ class Sms extends CApplicationComponent
      */
     public function init()
 	{
-		if (!function_exists ('curl_init'))
+        if (!function_exists ('curl_init'))
         {
             throw new CException ('Для работы расширения требуется cURL');
         }
 
-		parent::init();
+        parent::init();
 	}
     
     /**
@@ -47,32 +47,32 @@ class Sms extends CApplicationComponent
     public function send($to, $text, $from = null, $time = null, $test = false, $partner_id = null)
     {
         $url = self::HOST . self::SEND;
-		$this->id = null;
+        $this->id = null;
 
-		$params = $this->get_default_params();
-		$params['to'] = $to;
-		$params['text'] = $text;
+        $params = $this->get_default_params();
+        $params['to'] = $to;
+        $params['text'] = $text;
 
-		if ($from)
-			$params['from'] = $from;
+        if ($from)
+            $params['from'] = $from;
 
-		if ($time && $time < (time() + 7 * 60 * 60 * 24))
-			$params['time'] = $time;
+        if ($time && $time < (time() + 7 * 60 * 60 * 24))
+            $params['time'] = $time;
 
-		if ($test)
-			$params['test'] = 1;
+        if ($test)
+            $params['test'] = 1;
 
-		if ($partner_id)
-			$params['partner_id'] = $partner_id;
+        if ($partner_id)
+            $params['partner_id'] = $partner_id;
 
-		$result = $this->request($url, $params);
-		$result = explode("\n", $result);
+        $result = $this->request($url, $params);
+        $result = explode("\n", $result);
 
-		return array(
-			'code' => $result[0],
-			'id' => $result[1],
-			'balance' => str_replace( 'balance=', '', $result[2] )
-		);
+        return array(
+            'code' => $result[0],
+            'id' => $result[1],
+            'balance' => str_replace( 'balance=', '', $result[2] )
+        );
     }
     
     /**
@@ -85,11 +85,11 @@ class Sms extends CApplicationComponent
     {
         $url = self::HOST.self::STATUS;
 
-		$params = $this->get_default_params();
-		$params['id'] = $id;
-		$result = $this->request($url, $params);
+        $params = $this->get_default_params();
+        $params['id'] = $id;
+        $result = $this->request($url, $params);
 
-		return $result;
+        return $result;
     }
     
     /**
@@ -100,14 +100,14 @@ class Sms extends CApplicationComponent
     {
         $url = self::HOST . self::BALANCE;
 
-		$params = $this->get_default_params();
-		$result = $this->request($url, $params);
-		$result = explode("\n", $result);
+        $params = $this->get_default_params();
+        $result = $this->request($url, $params);
+        $result = explode("\n", $result);
 
-		return array(
-			'code' => $result[0],
-			'balance' => $result[1]
-		);
+        return array(
+            'code' => $result[0],
+            'balance' => $result[1]
+        );
     }
     
     /**
@@ -119,15 +119,15 @@ class Sms extends CApplicationComponent
     {
         $url = self::HOST . self::LIMIT;
 
-		$params = $this->get_default_params();
-		$result = $this->request($url, $params);
-		$result = explode("\n", $result);
+        $params = $this->get_default_params();
+        $result = $this->request($url, $params);
+        $result = explode("\n", $result);
 
-		return array(
-			'code' => $result[0],
-			'total' => $result[1],
-			'current' => $result[2]
-		);
+        return array(
+            'code' => $result[0],
+            'total' => $result[1],
+            'current' => $result[2]
+        );
     }
     
     /**
@@ -139,21 +139,21 @@ class Sms extends CApplicationComponent
      */
     public function cost($to, $text) 
     {
-		$url = self::HOST.self::COST;
-		$this->id = null;
+        $url = self::HOST.self::COST;
+        $this->id = null;
 
-		$params = $this->get_default_params();
-		$params['to'] = $to;
-		$params['text'] = $text;
+        $params = $this->get_default_params();
+        $params['to'] = $to;
+        $params['text'] = $text;
 
-		$result = $this->request($url, $params);
-		$result = explode("\n", $result);
+        $result = $this->request($url, $params);
+        $result = explode("\n", $result);
 
-		return array(
-			'code' => $result[0],
-			'price' => $result[1],
-			'number' => $result[2]
-		);
+        return array(
+            'code' => $result[0],
+            'price' => $result[1],
+            'number' => $result[2]
+        );
 	}
     
     /**
@@ -163,19 +163,19 @@ class Sms extends CApplicationComponent
      */
     public function senders() 
     {
-		$url = self::HOST . self::SENDERS;
-		$params = $this->get_default_params();
-		$result = $this->request( $url, $params );
-		$result = explode("\n", rtrim($result));
+        $url = self::HOST . self::SENDERS;
+        $params = $this->get_default_params();
+        $result = $this->request( $url, $params );
+        $result = explode("\n", rtrim($result));
 
-		$response = array(
-			'code' => $result[0],
-			'senders' => $result
-		);
-		unset($response['senders'][0]);
-		$response['senders'] = array_values($response['senders']);
-        
-		return $response;
+        $response = array(
+            'code' => $result[0],
+            'senders' => $result
+        );
+        unset($response['senders'][0]);
+        $response['senders'] = array_values($response['senders']);
+
+        return $response;
 	}
     
     /**
@@ -185,19 +185,19 @@ class Sms extends CApplicationComponent
      */
     public function check() 
     {
-		$url = self::HOST . self::CHECK;
-		$params = $this->get_default_params();
-		$result = $this->request($url, $params);
+        $url = self::HOST . self::CHECK;
+        $params = $this->get_default_params();
+        $result = $this->request($url, $params);
 
-		return $result;
+        return $result;
 	}
     
     protected function get_default_params() 
     {
         $this->get_auth_token();
         $this->get_sha512();
-        
-		return array(
+
+        return array(
             'login' => $this->login,
             'token' => $this->token,
             'sha512' => $this->sha512
@@ -206,30 +206,30 @@ class Sms extends CApplicationComponent
     
     protected function get_auth_token() 
     {
-		$url = self::HOST . self::GET_TOKEN;
-		$this->token = $this->request($url);
-        
-		return $this->token;
+        $url = self::HOST . self::GET_TOKEN;
+        $this->token = $this->request($url);
+
+        return $this->token;
 
 	}
     
     protected function get_sha512() 
     {
-		$this->sha512 = hash('sha512', $this->password.$this->token);
+        $this->sha512 = hash('sha512', $this->password.$this->token);
 	}
     
     protected function request($url, $params = array()) 
     {
-		$ch = curl_init($url);
-		$options = array(
-			CURLOPT_RETURNTRANSFER => 1,
-			CURLOPT_TIMEOUT => 30,
-			CURLOPT_POSTFIELDS => $params
-		);
-		curl_setopt_array($ch, $options);
-		$result = curl_exec($ch);
-		curl_close($ch);
+        $ch = curl_init($url);
+        $options = array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_POSTFIELDS => $params
+        );
+        curl_setopt_array($ch, $options);
+        $result = curl_exec($ch);
+        curl_close($ch);
 
-		return $result;
+        return $result;
 	}
 }
