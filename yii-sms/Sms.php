@@ -31,7 +31,7 @@ class Sms extends CApplicationComponent
         }
 
         parent::init();
-	}
+    }
     
     /**
      * Send message
@@ -154,7 +154,7 @@ class Sms extends CApplicationComponent
             'price' => $result[1],
             'number' => $result[2]
         );
-	}
+    }
     
     /**
      * Get my senders list
@@ -190,7 +190,7 @@ class Sms extends CApplicationComponent
         $result = $this->request($url, $params);
 
         return $result;
-	}
+    }
     
     protected function get_default_params() 
     {
@@ -211,12 +211,12 @@ class Sms extends CApplicationComponent
 
         return $this->token;
 
-	}
+    }
     
     protected function get_sha512() 
     {
         $this->sha512 = hash('sha512', $this->password.$this->token);
-	}
+    }
     
     protected function request($url, $params = array()) 
     {
@@ -231,5 +231,5 @@ class Sms extends CApplicationComponent
         curl_close($ch);
 
         return $result;
-	}
+    }
 }
