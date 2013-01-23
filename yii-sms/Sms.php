@@ -176,7 +176,7 @@ class Sms extends CApplicationComponent
         $response['senders'] = array_values($response['senders']);
 
         return $response;
-	}
+    }
     
     /**
      * Check user auth
@@ -202,7 +202,7 @@ class Sms extends CApplicationComponent
             'token' => $this->token,
             'sha512' => $this->sha512
         );
-	}
+    }
     
     protected function get_auth_token() 
     {
