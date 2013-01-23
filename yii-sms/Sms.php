@@ -3,23 +3,19 @@
 class Sms extends CApplicationComponent
 {
     const HOST  = 'http://sms.ru/';
-	const SEND = 'sms/send?';
-	const STATUS = 'sms/status?';
-	const COST = 'sms/cost?';
-	const BALANCE = 'my/balance?';
-	const LIMIT = 'my/limit?';
-	const SENDERS = 'my/senders?';
-	const GET_TOKEN = 'auth/get_token';
-	const CHECK = 'auth/check?';
-    
+    const SEND = 'sms/send?';
+    const STATUS = 'sms/status?';
+    const COST = 'sms/cost?';
+    const BALANCE = 'my/balance?';
+    const LIMIT = 'my/limit?';
+    const SENDERS = 'my/senders?';
+    const GET_TOKEN = 'auth/get_token';
+    const CHECK = 'auth/check?';
+
     public $login;
-    
     public $password;
-    
     public $token;
-    
     public $id;
-    
     public $sha512;
     
     /**
