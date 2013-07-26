@@ -8,7 +8,7 @@ Yii-расширение для работы с api сервиса [sms.ru](http
 Загрузите yii-sms из этого репозитория github:
 
     cd protected/extensions
-    git clone git://github.com/pimax/yii-sms.git
+    git clone git://github.com/RuzievBakhtiyor/yii-sms.git
 
 В protected/config/main.php внесите следующие строки:
 
@@ -19,6 +19,7 @@ Yii-расширение для работы с api сервиса [sms.ru](http
             'class'    => 'application.extensions.yii-sms.Sms',
             'login'     => 'username',      // Логин на сайте sms.ru
             'password'   => 'password',     // Пароль
+            'api_id'	=> 'api_id',	    // API-Id	
         )
     );
 
