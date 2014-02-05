@@ -69,9 +69,9 @@ class Sms extends CApplicationComponent
         $result = explode("\n", $result);
 
         return array(
-            'code' => $result[0],
-            'id' => $result[1],
-            'balance' => str_replace( 'balance=', '', $result[2] )
+            'code' => isset($result[0]) ? $result[0] : '',
+            'id' => isset($result[1]) ? $result[1] : '',
+            'balance' => str_replace( 'balance=', '', isset($result[2]) ? $result[2] : '' )
         );
     }
     
