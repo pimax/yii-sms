@@ -224,7 +224,7 @@ class Sms extends CApplicationComponent
         $options = array(
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_TIMEOUT => 30,
-            CURLOPT_POSTFIELDS => $params
+            CURLOPT_POSTFIELDS => http_build_query($params)
         );
         curl_setopt_array($ch, $options);
         $result = curl_exec($ch);
