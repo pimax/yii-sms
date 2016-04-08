@@ -19,6 +19,7 @@ Yii-расширение для работы с api сервиса [sms.ru](http
             'class'    => 'application.extensions.yii-sms.Sms',
             'login'     => 'username',      // Логин на сайте sms.ru
             'password'   => 'password',     // Пароль
+            'api_id'	=> 'api_id',	    // API-Id	
         )
     );
 

@@ -17,6 +17,7 @@ class Sms extends CApplicationComponent
     public $token;
     public $id;
     public $sha512;
+    public $api_id;
     
     /**
      * Init
@@ -200,7 +201,8 @@ class Sms extends CApplicationComponent
         return array(
             'login' => $this->login,
             'token' => $this->token,
-            'sha512' => $this->sha512
+            'sha512' => $this->sha512,
+            'api_id'=> $this->api_id,
         );
     }
     
